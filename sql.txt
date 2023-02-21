@@ -5,3 +5,41 @@ SELECT * FROM dba_registry;
 ALTER PROFILE DEFAULT LIMIT PASSWORD_LIFE_TIME UNLIMITED;
 /
 SELECT dbms_xdb.gethttpport FROM dual;
+/
+create table cricket (match_no number,
+                      team_a char(30),
+                      team_b char(30),
+                      winner char(30));
+/
+insert into cricket values(01,'WESTINDIES','SRILANKA','WESTINDIES');
+insert into cricket values(02,'INDIA','SRILANKA','INIDA');
+insert into cricket values(03,'AUSTRALIA','SRILANKA','AUSTRALIA');
+insert into cricket values(04,'WESTINDIES','SRILANKA','SRILANKA');
+insert into cricket values(05,'AUSTRALIA','INDIA','AUSTRALIA');
+insert into cricket values(06,'WESTINDIES','SRILANKA','WESTINDIES');
+insert into cricket values(07,'INDIA','WESTINDIES','WESTINDIES');
+insert into cricket values(08,'WESTINDIES','AUSTRALIA','AUSTRALIA');
+insert into cricket values(09,'WESTINDIES','INDIA','INDIA');
+insert into cricket values(10,'AUSTRALIA','WESTINDIES','WESTINDIES');
+insert into cricket values(11,'WESTINDIES','SRILANKA','WESTINDIES');
+insert into cricket values(12,'INDIA','AUSTRALIA','INDIA');
+insert into cricket values(13,'SRILANKA','NEWZEALAND','SRILANKA');
+insert into cricket values(14,'NEWZEALAND','INDIA','INDIA');
+/
+select matches_played.team_name,
+       no_of_matches_played,
+       nvl(no_of_matches_won,0)matches_won,
+       no_of_matches_played-nvl(no_of_matches_won,0) matches_lost
+from (select team_name,sum(cnt) as no_of_matches_played from(
+select TEAM_A team_name,count(*) cnt
+from cricket group by TEAM_A
+union all
+select TEAM_B team_name,count(*) cnt
+from cricket group by TEAM_B)
+group by team_name)matches_played,
+(select winner team_name,count(*) no_of_matches_won
+from cricket
+group by winner)matches_won
+where matches_played.team_name= matches_won.team_name(+);
+/
+

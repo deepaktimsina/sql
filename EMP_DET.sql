@@ -35,3 +35,14 @@ ELSE EMP.SAL * 1.095
 END FROM DEPT
 WHERE EMP.DEPTNO=DEPT.DEPTNO);
 /
+create table t7 (person_name varchar2(25),parent_name varchar2(25),person_status varchar2(25));
+/
+insert into t7 values('Roman','Mani','Alive');
+insert into t7 values('Sujan','Dillu','Dead');
+insert into t7 values('Mani','Ganjabir','Alive');
+insert into t7 values('Dillu','Kapilmani','Alive');
+insert into t7 values('Ganjabir','Unkonwn','Alive');
+insert into t7 values('Kapilmani','Unknown','Dead');
+/
+select * from t7;
+/

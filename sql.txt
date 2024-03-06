@@ -42,4 +42,20 @@ from cricket
 group by winner)matches_won
 where matches_played.team_name= matches_won.team_name(+);
 /
+-------------------------030624------------------------------------------
+REATE TABLE "HR"."XXLGE_CUSTOMER_MST" 
+   (	"CUST_CODE" NUMBER, 
+	"CUST_NAME" VARCHAR2(20), 
+	"CUST_ADDRESS" VARCHAR2(20), 
+	"CUST_PHONE_NO" VARCHAR2(10), 
+	"CUST_EMAIL" VARCHAR2(30), 
+	"CUST_GST_NO" VARCHAR2(10), 
+	"CREATED_BY" VARCHAR2(10), 
+	"CREATED_DATE" DATE DEFAULT sysdate, 
+	"UPDATED_BY" VARCHAR2(10), 
+	"UPDATED_DATE" DATE DEFAULT sysdate, 
+	"IS_ACTIVE" CHAR(1), 
+	"CITY_CODE" NUMBER(5,0), 
+	 PRIMARY KEY ("CUST_CODE")
+----------------
 

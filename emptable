@@ -1,0 +1,110 @@
+-- Create table
+create table EMPMAST
+(
+  emp_code               VARCHAR2(15) not null,
+  title                  VARCHAR2(3),
+  emp_name               VARCHAR2(40),
+  father_name            VARCHAR2(40),
+  join_date              DATE,
+  dob                    DATE,
+  location               VARCHAR2(50),
+  dept                   VARCHAR2(20),
+  designation            VARCHAR2(30),
+  qualification          VARCHAR2(30),
+  staff_level            VARCHAR2(6),
+  address                VARCHAR2(100),
+  garantor               VARCHAR2(40),
+  basic                  NUMBER(10),
+  hra                    NUMBER(10),
+  taxable_allowance      NUMBER(10),
+  others_allowance       NUMBER(10),
+  accomodation_allowance NUMBER(10),
+  travel_allowance       NUMBER(10),
+  tax_allowance          NUMBER(10),
+  annual_bonus           NUMBER(10),
+  leave_encashment       NUMBER(10),
+  performance_inct       NUMBER(10),
+  loan                   NUMBER(10),
+  adv_amt                NUMBER(10),
+  pf_ded                 CHAR(1),
+  pf_no                  VARCHAR2(20),
+  esi_ded                CHAR(1),
+  esi_no                 VARCHAR2(20),
+  p_tax_ded              CHAR(1),
+  p_tax_no               VARCHAR2(20),
+  leave_op               NUMBER(7),
+  leave_availed          NUMBER(7),
+  leave_bal              NUMBER(7),
+  leave_cr               NUMBER(7),
+  leave_taken            NUMBER(7),
+  last_increment         NUMBER(7),
+  current_increment      NUMBER(7),
+  resign_tag             CHAR(1),
+  resign_date            DATE,
+  tot_p                  NUMBER(5,2),
+  tot_a                  NUMBER(5,2),
+  tot_l                  NUMBER(5,2),
+  no_days                NUMBER(5,2),
+  sal_cal                NUMBER(8),
+  ded_loan               NUMBER(8),
+  ded_adv                NUMBER(8),
+  ded_pf                 NUMBER(8),
+  ded_esi                NUMBER(8,2),
+  ded_tds                NUMBER(8),
+  ded_tax                NUMBER(8),
+  other_ded              NUMBER(14,2),
+  sal_date               DATE,
+  religion               VARCHAR2(30),
+  caste                  VARCHAR2(30),
+  bank_ac                VARCHAR2(15),
+  bank_name              VARCHAR2(30),
+  ifsc                   VARCHAR2(11),
+  mobile_no              VARCHAR2(20),
+  email                  VARCHAR2(40),
+  add1                   VARCHAR2(40),
+  add2                   VARCHAR2(60),
+  pymnt_mode             CHAR(1),
+  report_to              VARCHAR2(6),
+  machine_id             NUMBER,
+  inter_com              NUMBER(6),
+  official_mobile        VARCHAR2(20),
+  official_mail          VARCHAR2(60),
+  voter_id               VARCHAR2(20),
+  passport_no            VARCHAR2(20),
+  uan                    NUMBER,
+  adhaar_no              VARCHAR2(20),
+  passport_exp_date      DATE,
+  gender                 VARCHAR2(1),
+  marital_status         VARCHAR2(1),
+  export_yn              CHAR(1),
+  user_name              VARCHAR2(30),
+  ent_date               DATE,
+  modify_by              VARCHAR2(40),
+  modify_date            DATE
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table EMPMAST
+  add constraint PK_EMPMAST primary key (EMP_CODE)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );

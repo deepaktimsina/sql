@@ -108,3 +108,21 @@ alter table EMPMAST
     minextents 1
     maxextents unlimited
   );
+/
+CREATE TABLE daily_activity ( 
+    seq_id           NUMBER(6), 
+    task_id          NUMBER, 
+    task_type        CHAR(1), 
+    task_assign_date DATE, 
+    remarks          VARCHAR2(200) 
+) 
+
+   PARTITION BY RANGE (task_assign_date) 
+(  
+   PARTITION assign_date_202401 VALUES LESS THAN (TO_DATE('01-FEB-2014','dd-MON-yyyy')),
+   PARTITION assign_date_202402 VALUES LESS THAN (TO_DATE('01-MAR-2014','dd-MON-yyyy')),
+   PARTITION assign_date_202403 VALUES LESS THAN (TO_DATE('01-APR-2014','dd-MON-yyyy')),
+   PARTITION assign_date_202404 VALUES LESS THAN (TO_DATE('01-MAY-2014','dd-MON-yyyy')),
+   PARTITION assign_date_202405 VALUES LESS THAN (TO_DATE('01-JUN-2014','dd-MON-yyyy')),
+   PARTITION assign_date_202406 VALUES LESS THAN (TO_DATE('01-JUL-2014','dd-MON-yyyy'))
+)
